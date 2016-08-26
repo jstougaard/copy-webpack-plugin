@@ -1,6 +1,9 @@
 node_modules
 coverage
-dist
+
+# Prebuild
+# dist
+
 *.log
 .*
 !.gitignore
