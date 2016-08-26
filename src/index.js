@@ -55,6 +55,8 @@ function CopyWebpackPlugin(patterns = [], options = {}) {
 
                 const forceWrite = Boolean(pattern.force);
 
+                const transformationFn = pattern.transform || function() {};
+
                 return fs
                     .statAsync(absSrc)
                     .catch(() => {
@@ -77,7 +79,8 @@ function CopyWebpackPlugin(patterns = [], options = {}) {
                                 forceWrite,
                                 ignoreList,
                                 relDirDest: relDest,
-                                writtenAssetHashes
+                                writtenAssetHashes,
+                                transformationFn
                             });
                         }
 
@@ -138,7 +141,8 @@ function CopyWebpackPlugin(patterns = [], options = {}) {
                                     copyUnmodified,
                                     forceWrite,
                                     relFileDest,
-                                    writtenAssetHashes
+                                    writtenAssetHashes,
+                                    transformationFn
                                 });
                             });
                     });

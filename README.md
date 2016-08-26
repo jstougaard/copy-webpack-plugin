@@ -1,3 +1,12 @@
+## Modified by JS
+
+Modified to allow transformation of the file content
+Added a `transform` parameter to the pattern properties
+    - Is optional
+    - Takes a function
+    - Returns transformed output
+
+
 ## Copy Webpack Plugin
 
 This is a [webpack](http://webpack.github.io/) plugin that copies individual files or entire directories to the build directory.

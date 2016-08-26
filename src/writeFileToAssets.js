@@ -16,6 +16,7 @@ export default (opts) => {
     const forceWrite = opts.forceWrite;
     const copyUnmodified = opts.copyUnmodified;
     const writtenAssetHashes = opts.writtenAssetHashes;
+    const transformationFn = opts.transformationFn;
 
     if (compilation.assets[relFileDest] && !forceWrite) {
         return Promise.resolve();
@@ -31,12 +32,14 @@ export default (opts) => {
         }
 
         function addToAssets() {
+            let fileContent = fs.readFileSync(absFileSrc);
+
             compilation.assets[relFileDest] = {
                 size () {
                     return stat.size;
                 },
                 source () {
-                    return fs.readFileSync(absFileSrc);
+                    return transformationFn(fileContent) || fileContent;
                 }
             };
 
