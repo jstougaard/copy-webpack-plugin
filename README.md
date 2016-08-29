@@ -1,7 +1,7 @@
 ## Modified by JS
 
 Modified to allow transformation of the file content
-Added a `transform` parameter to the pattern properties
+* Added a `transform` parameter to the pattern properties
     - Is optional
     - Takes a function
     - Returns transformed output
