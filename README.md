@@ -3,8 +3,20 @@
 Modified to allow transformation of the file content
 * Added a `transform` parameter to the pattern properties
     - Is optional
-    - Takes a function
+    - Takes a function with file content as parameter
     - Returns transformed output
+
+```javascript
+    new CopyWebpackPlugin([
+        // {output}/file.ejs
+        { 
+            from: 'from/template.ejs',
+            transform: function(fileContent) {
+                return _.template(fileContent).source;
+            }
+        }
+    ]
+```
 
 
 ## Copy Webpack Plugin
